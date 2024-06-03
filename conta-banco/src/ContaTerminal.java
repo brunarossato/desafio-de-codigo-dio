@@ -15,6 +15,9 @@ public class ContaTerminal {
         System.out.println("Agora, digite o seu sobrenome: ");
         String sobrenome = scanner.next();
 
+        System.out.println("Insira seu CPF:");
+        String cpf = scanner.next();
+
         System.out.println("Por favor, digite o número da Agência: ");
         String agencia = scanner.next();
 
@@ -25,7 +28,36 @@ public class ContaTerminal {
         double saldo = scanner.nextDouble();
 
         System.out.println("Olá " + nome + " " + sobrenome + "! Obrigado por criar uma conta em nosso banco, sua agência é " + agencia + ", conta de número " + conta + " e seu saldo de R$ " + saldo + " já está disponível para saque.");
-        
+        System.out.println();
+
+        System.out.println("------------SUA CONTA------------");
+        System.out.println();
+
+        System.out.println("Deseja fazer um saque? Insira Sim ou Não:");
+        String saque = scanner.next();
+
+        if (saque.equalsIgnoreCase("Sim")) {
+            System.out.println("Insira o valor que deseja sacar:");
+            double valor = scanner.nextDouble();
+            
+            if (valor > 0) {
+                if (valor <= saldo) {
+                    saldo -= valor;
+                    System.out.println("Saque realizado com sucesso. Seu novo saldo é: R$ " + saldo);
+                } else {
+                    System.out.println("Saldo insuficiente. Seu saldo atual é: R$ " + saldo);
+                }
+            } else {
+                System.out.println("Valor de saque inválido. Insira um valor positivo.");
+            }
+        } else {
+            System.out.println("Solicitação de saque cancelada.");
+        }
+
         scanner.close();
+
     }
 }
+    
+
+        
